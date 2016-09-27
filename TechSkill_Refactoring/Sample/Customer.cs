@@ -31,28 +31,55 @@ namespace Sample
 
         public string Statement()
         {
-            double totlaAmount = 0;
-            int frequentRenterPoints = 0;
+            
             List<Rental> rentals = this._rentals;
             string result = "Rental Record for " + GetName() + "\n";
 
             foreach (Rental rentalItem in rentals)
             {
-                //常客積點
-                frequentRenterPoints += rentalItem.GetFrequentRenterPoints();
-
                 //顯示此筆租借資料
                 result += "\t" + rentalItem.GetMovie().GetTitle() + "\t" + rentalItem.GetCharge().ToString() + "\n";
-                totlaAmount += rentalItem.GetCharge();
             }
 
-            //結尾列印
-            result += "Amount owed is " + totlaAmount.ToString() + "\n";
-            result += "You earned " + frequentRenterPoints.ToString() + " frequent renter points";
+            ////add footer lines
+            result += "Amount owed is " + GetTotalCharge().ToString() + "\n";
+            result += "You earned " + GetFrequentRenterPoints().ToString() + " frequent renter points";
 
             return result;
         }
 
-        
+        /// <summary>
+        /// 取得常客積點
+        /// </summary>
+        /// <returns></returns>
+        private int GetFrequentRenterPoints()
+        {
+            int frequentRenterPoints = 0;
+
+            List<Rental> rentals = this._rentals;
+            foreach (Rental rentalItem in rentals)
+            {
+                frequentRenterPoints += rentalItem.GetFrequentRenterPoints();
+            }
+
+            return frequentRenterPoints;
+        }
+
+        /// <summary>
+        /// 取得租金計算
+        /// </summary>
+        /// <returns></returns>
+        private double GetTotalCharge()
+        {
+            double totlaAmount = 0;
+
+            List<Rental> rentals = this._rentals;
+            foreach (Rental rentalItem in rentals)
+            {
+                totlaAmount += rentalItem.GetCharge();
+            }
+
+            return totlaAmount;
+        }
     }
 }

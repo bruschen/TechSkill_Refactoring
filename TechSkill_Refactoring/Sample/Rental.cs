@@ -75,7 +75,6 @@ namespace Sample
             {
                 return 1;
             }
-
         }
     }
 }
