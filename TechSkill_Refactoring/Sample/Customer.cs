@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -38,13 +39,7 @@ namespace Sample
             foreach (Rental rentalItem in rentals)
             {
                 //常客積點
-                frequentRenterPoints++;
-
-                if (rentalItem.GetMovie().GetPriceCode() == Movie.NewRelease
-                    && rentalItem.GetDaysRented()>1)
-                {
-                    frequentRenterPoints++;
-                }
+                frequentRenterPoints += rentalItem.GetFrequentRenterPoints();
 
                 //顯示此筆租借資料
                 result += "\t" + rentalItem.GetMovie().GetTitle() + "\t" + rentalItem.GetCharge().ToString() + "\n";
@@ -58,36 +53,6 @@ namespace Sample
             return result;
         }
 
-        ///// <summary>
-        ///// 計算一筆租片費用
-        ///// </summary>
-        ///// <param name="rental"></param>
-        ///// <returns></returns>
-        //private double GetAmountForRental(Rental rental)
-        //{
-        //    double rentalAmount = 0;
-        //    switch (rental.GetMovie().GetPriceCode())
-        //    {
-        //        case 0: //(Movie.Regular):
-        //            rentalAmount += 2;
-        //            if (rental.GetDaysRented() > 2)
-        //            {
-        //                rentalAmount += (rental.GetDaysRented() - 2)*1.5;
-        //            }
-        //            break;
-        //        case 1: //Movie.NewRegular:
-        //            rentalAmount += rental.GetDaysRented()*3;
-        //            break;
-
-        //        case 2:
-        //            rentalAmount += 1.5;
-        //            if (rental.GetDaysRented() > 3)
-        //            {
-        //                rentalAmount += (rental.GetDaysRented() - 3)*1.5;
-        //            }
-        //            break;
-        //    }
-        //    return rentalAmount;
-        //}
+        
     }
 }

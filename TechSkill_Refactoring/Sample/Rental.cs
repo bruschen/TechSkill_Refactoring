@@ -58,5 +58,24 @@ namespace Sample
             }
             return rentalAmount;
         }
+
+        /// <summary>
+        /// 計算常客積點
+        /// </summary>
+        /// <param name="rentalItem"></param>
+        /// <returns></returns>
+        public int GetFrequentRenterPoints()
+        {
+            if (this.GetMovie().GetPriceCode() == Movie.NewRelease
+                && this.GetDaysRented() > 1)
+            {
+                return 2;
+            }
+            else
+            {
+                return 1;
+            }
+
+        }
     }
 }
