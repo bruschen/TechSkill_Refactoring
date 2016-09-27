@@ -35,6 +35,32 @@ namespace Sample
         {
             return this._title;
         }
-        
+
+        public double GetRentalAmount(int daysRented)
+        {
+            double rentalAmount = 0;
+            switch (GetPriceCode())
+            {
+                case 0: //(Movie.Regular):
+                    rentalAmount += 2;
+                    if (daysRented > 2)
+                    {
+                        rentalAmount += (daysRented - 2) * 1.5;
+                    }
+                    break;
+                case 1: //Movie.NewRegular:
+                    rentalAmount += daysRented * 3;
+                    break;
+
+                case 2:
+                    rentalAmount += 1.5;
+                    if (daysRented > 3)
+                    {
+                        rentalAmount += (daysRented - 3) * 1.5;
+                    }
+                    break;
+            }
+            return rentalAmount;
+        }
     }
 }
