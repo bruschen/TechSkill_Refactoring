@@ -38,27 +38,7 @@ namespace Sample
             double thisAmount = 0;
             foreach (Rental rentalItem in rentals)
             {
-                switch (rentalItem.GetMovie().GetPriceCode())
-                {
-                    case 0://(Movie.Regular):
-                        thisAmount += 2;
-                        if (rentalItem.GetDaysRented()>2)
-                        {
-                            thisAmount += (rentalItem.GetDaysRented() - 2)*1.5;
-                        }
-                        break;
-                    case 1: //Movie.NewRegular:
-                        thisAmount += rentalItem.GetDaysRented()*3;
-                        break;
-
-                    case 2:
-                        thisAmount += 1.5;
-                        if (rentalItem.GetDaysRented()>3)
-                        {
-                            thisAmount += (rentalItem.GetDaysRented() - 3)*1.5;
-                        }
-                        break;
-                }
+                thisAmount = GetAmountForRental(rentalItem);
 
                 //常客積點
                 frequentRenterPoints++;
@@ -79,6 +59,33 @@ namespace Sample
             result += "You earned " + frequentRenterPoints.ToString() + " frequent renter points";
 
             return result;
+        }
+
+        private double GetAmountForRental(Rental rentalItem)
+        {
+            double thisAmount = 0;
+            switch (rentalItem.GetMovie().GetPriceCode())
+            {
+                case 0: //(Movie.Regular):
+                    thisAmount += 2;
+                    if (rentalItem.GetDaysRented() > 2)
+                    {
+                        thisAmount += (rentalItem.GetDaysRented() - 2)*1.5;
+                    }
+                    break;
+                case 1: //Movie.NewRegular:
+                    thisAmount += rentalItem.GetDaysRented()*3;
+                    break;
+
+                case 2:
+                    thisAmount += 1.5;
+                    if (rentalItem.GetDaysRented() > 3)
+                    {
+                        thisAmount += (rentalItem.GetDaysRented() - 3)*1.5;
+                    }
+                    break;
+            }
+            return thisAmount;
         }
     }
 }
