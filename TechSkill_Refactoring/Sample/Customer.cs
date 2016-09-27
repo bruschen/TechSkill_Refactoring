@@ -61,31 +61,36 @@ namespace Sample
             return result;
         }
 
-        private double GetAmountForRental(Rental rentalItem)
+        /// <summary>
+        /// 計算一筆租片費用
+        /// </summary>
+        /// <param name="rental"></param>
+        /// <returns></returns>
+        private double GetAmountForRental(Rental rental)
         {
-            double thisAmount = 0;
-            switch (rentalItem.GetMovie().GetPriceCode())
+            double rentalAmount = 0;
+            switch (rental.GetMovie().GetPriceCode())
             {
                 case 0: //(Movie.Regular):
-                    thisAmount += 2;
-                    if (rentalItem.GetDaysRented() > 2)
+                    rentalAmount += 2;
+                    if (rental.GetDaysRented() > 2)
                     {
-                        thisAmount += (rentalItem.GetDaysRented() - 2)*1.5;
+                        rentalAmount += (rental.GetDaysRented() - 2)*1.5;
                     }
                     break;
                 case 1: //Movie.NewRegular:
-                    thisAmount += rentalItem.GetDaysRented()*3;
+                    rentalAmount += rental.GetDaysRented()*3;
                     break;
 
                 case 2:
-                    thisAmount += 1.5;
-                    if (rentalItem.GetDaysRented() > 3)
+                    rentalAmount += 1.5;
+                    if (rental.GetDaysRented() > 3)
                     {
-                        thisAmount += (rentalItem.GetDaysRented() - 3)*1.5;
+                        rentalAmount += (rental.GetDaysRented() - 3)*1.5;
                     }
                     break;
             }
-            return thisAmount;
+            return rentalAmount;
         }
     }
 }
