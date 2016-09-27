@@ -35,11 +35,8 @@ namespace Sample
             List<Rental> rentals = this._rentals;
             string result = "Rental Record for " + GetName() + "\n";
 
-            double thisAmount = 0;
             foreach (Rental rentalItem in rentals)
             {
-                thisAmount = rentalItem.GetCharge();
-                
                 //常客積點
                 frequentRenterPoints++;
 
@@ -50,8 +47,8 @@ namespace Sample
                 }
 
                 //顯示此筆租借資料
-                result += "\t" + rentalItem.GetMovie().GetTitle() + "\t" + thisAmount.ToString() + "\n";
-                totlaAmount += thisAmount;
+                result += "\t" + rentalItem.GetMovie().GetTitle() + "\t" + rentalItem.GetCharge().ToString() + "\n";
+                totlaAmount += rentalItem.GetCharge();
             }
 
             //結尾列印
