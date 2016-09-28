@@ -34,7 +34,7 @@ namespace Sample
         /// <returns></returns>
         public double GetCharge()
         {
-            return this._movie.GetRentalAmount(this._daysRented); ;
+            return this._movie.GetCharge(this._daysRented); ;
         }
 
         /// <summary>

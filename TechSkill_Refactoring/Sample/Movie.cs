@@ -8,17 +8,18 @@ namespace Sample
 {
     public class Movie
     {
-        public static int Childrens = 2;
-        public static int Regular = 0;
-        public static int NewRelease = 1;
+        public const int Childrens = 2;
+        public const int Regular = 0;
+        public const int NewRelease = 1;
 
         private string _title;
         private int _priceCode;
+        private Price _price;
 
         public Movie(string title, int priceCode)
         {
             this._title = title;
-            this._priceCode = priceCode;
+            SetPriceCode(priceCode);
         }
 
         public int GetPriceCode()
@@ -28,6 +29,21 @@ namespace Sample
 
         public void SetPriceCode(int value)
         {
+            switch (value)
+            {
+                case Regular:
+                    _price= new RegularPrice();
+                    break;
+                case Childrens:
+                    _price = new ChildrensPrice();
+                    break;
+                case NewRelease:
+                    _price = new NewReleasePrice();
+                    break;
+                default:
+                    throw new Exception("Incorrect Price Code");
+            }
+
             this._priceCode = value;
         }
 
@@ -36,31 +52,9 @@ namespace Sample
             return this._title;
         }
 
-        public double GetRentalAmount(int daysRented)
+        public double GetCharge(int daysRented)
         {
-            double rentalAmount = 0;
-            switch (GetPriceCode())
-            {
-                case 0: //(Movie.Regular):
-                    rentalAmount += 2;
-                    if (daysRented > 2)
-                    {
-                        rentalAmount += (daysRented - 2) * 1.5;
-                    }
-                    break;
-                case 1: //Movie.NewRegular:
-                    rentalAmount += daysRented * 3;
-                    break;
-
-                case 2:
-                    rentalAmount += 1.5;
-                    if (daysRented > 3)
-                    {
-                        rentalAmount += (daysRented - 3) * 1.5;
-                    }
-                    break;
-            }
-            return rentalAmount;
+            return this._price.GetCharge(daysRented);
         }
 
         /// <summary>
@@ -70,15 +64,7 @@ namespace Sample
         /// <returns></returns>
         public int GetFrequentRenterPoints(int daysRented)
         {
-            if (GetPriceCode() == Movie.NewRelease
-                && daysRented > 1)
-            {
-                return 2;
-            }
-            else
-            {
-                return 1;
-            }
+            return _price.GetFrequentRenterPoints(daysRented);
         }
     }
 }
