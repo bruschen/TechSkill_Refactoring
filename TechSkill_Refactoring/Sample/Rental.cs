@@ -34,9 +34,7 @@ namespace Sample
         /// <returns></returns>
         public double GetCharge()
         {
-            double rentalAmount = 0;
-            rentalAmount = this._movie.GetRentalAmount(this._daysRented);
-            return rentalAmount;
+            return this._movie.GetRentalAmount(this._daysRented); ;
         }
 
         /// <summary>
@@ -46,15 +44,7 @@ namespace Sample
         /// <returns></returns>
         public int GetFrequentRenterPoints()
         {
-            if (this.GetMovie().GetPriceCode() == Movie.NewRelease
-                && this.GetDaysRented() > 1)
-            {
-                return 2;
-            }
-            else
-            {
-                return 1;
-            }
+            return this._movie.GetFrequentRenterPoints(this._daysRented);
         }
     }
 }

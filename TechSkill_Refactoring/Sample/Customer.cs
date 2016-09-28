@@ -43,16 +43,16 @@ namespace Sample
 
             ////add footer lines
             result += "Amount owed is " + GetTotalCharge().ToString() + "\n";
-            result += "You earned " + GetFrequentRenterPoints().ToString() + " frequent renter points";
+            result += "You earned " + GetTotalFrequentRenterPoints().ToString() + " frequent renter points";
 
             return result;
         }
 
         /// <summary>
-        /// 取得常客積點
+        /// 取得常客積點總額
         /// </summary>
         /// <returns></returns>
-        private int GetFrequentRenterPoints()
+        private int GetTotalFrequentRenterPoints()
         {
             int frequentRenterPoints = 0;
 
@@ -66,7 +66,7 @@ namespace Sample
         }
 
         /// <summary>
-        /// 取得租金計算
+        /// 取得租金計算總額
         /// </summary>
         /// <returns></returns>
         private double GetTotalCharge()
