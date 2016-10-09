@@ -12,13 +12,24 @@ namespace CH0601ExtraMethod
 
         public void PrintOwing(double amount)
         {
-            double outStanding = 0.0;
-
             //// Extra Method without local variable
             PrintBanner();
 
+            double outStanding = GetOutStanding();
+
             //// Extra Method with local variable
-            PrintDetail(amount);
+            PrintDetail(outStanding);
+        }
+
+        private double GetOutStanding()
+        {
+            double outStanding = 0.0;
+            for (int i = 0; i < 10; i++)
+            {
+                outStanding += i;
+            }
+
+            return outStanding;
         }
 
         private void PrintDetail(double amount)
