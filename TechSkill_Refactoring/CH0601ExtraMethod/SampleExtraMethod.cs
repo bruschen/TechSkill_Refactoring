@@ -15,8 +15,7 @@ namespace CH0601ExtraMethod
             //// Extra Method without local variable
             PrintBanner();
 
-            double outStanding = amount*1.2;
-            outStanding = GetOutStanding(outStanding);
+            double outStanding = GetOutStanding(amount * 1.2);
 
             //// Extra Method with local variable
             PrintDetail(outStanding);
