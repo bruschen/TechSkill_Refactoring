@@ -15,10 +15,21 @@ namespace CH0601ExtraMethod
             //// Extra Method without local variable
             PrintBanner();
 
-            double outStanding = GetOutStanding();
+            double outStanding = amount*1.2;
+            outStanding = GetOutStanding(outStanding);
 
             //// Extra Method with local variable
             PrintDetail(outStanding);
+        }
+
+        private double GetOutStanding(double outStanding)
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                outStanding += i;
+            }
+
+            return outStanding;
         }
 
         private double GetOutStanding()
