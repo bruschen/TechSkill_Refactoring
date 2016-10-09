@@ -12,13 +12,18 @@ namespace CH0601ExtraMethod
 
         public void PrintOwing(double amount)
         {
-            printBanner();
+            PrintBanner();
 
-            Console.WriteLine("Name:" + _name);
-            Console.WriteLine("amount"+amount.ToString());
+            PrintDetail(amount);
         }
 
-        private void printBanner()
+        private void PrintDetail(double amount)
+        {
+            Console.WriteLine("Name:" + _name);
+            Console.WriteLine("amount" + amount.ToString());
+        }
+
+        private void PrintBanner()
         {
             throw new NotImplementedException();
         }
