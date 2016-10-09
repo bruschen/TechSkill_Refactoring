@@ -14,8 +14,10 @@ namespace CH0601ExtraMethod
         {
             double outStanding = 0.0;
 
+            //// Extra Method without local variable
             PrintBanner();
 
+            //// Extra Method with local variable
             PrintDetail(amount);
         }
 
