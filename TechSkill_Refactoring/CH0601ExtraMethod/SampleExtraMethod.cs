@@ -12,6 +12,8 @@ namespace CH0601ExtraMethod
 
         public void PrintOwing(double amount)
         {
+            double outStanding = 0.0;
+
             PrintBanner();
 
             PrintDetail(amount);
@@ -25,7 +27,9 @@ namespace CH0601ExtraMethod
 
         private void PrintBanner()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("**************************");
+            Console.WriteLine("****Customer  Owes *******");
+            Console.WriteLine("**************************");
         }
     }
 }
