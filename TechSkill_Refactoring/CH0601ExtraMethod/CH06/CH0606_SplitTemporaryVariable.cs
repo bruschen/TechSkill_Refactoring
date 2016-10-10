@@ -16,17 +16,18 @@ namespace CH0601ExtraMethod.CH06
         public double GetDistanceTravelled(int time)
         {
             double result;
-            double acc = _primaryForce/_mass;
+            double primaryAcc = _primaryForce/_mass; //// 第一個力造成的加速度
 
             int primaryTime = (int)Math.Min(time, _delay);
-            result = 0.5*acc*primaryTime * primaryTime;
+            result = 0.5*primaryAcc*primaryTime * primaryTime;
+
             int secondaryTime = (int)(time - _delay);
 
             if (secondaryTime>0)
             {
-                double primaryVel = acc*_delay;
-                acc = (_primaryForce + _secondaryForce)/_mass;
-                result += primaryVel*secondaryTime + 0.5*acc*secondaryTime*secondaryTime;
+                double primaryVel = primaryAcc*_delay;
+                double secondaryAcc = (_primaryForce + _secondaryForce)/_mass; //// 兩個力造成的加速度
+                result += primaryVel*secondaryTime + 0.5* secondaryAcc * secondaryTime*secondaryTime;
             }
 
 
