@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="CH06\CH0605_IntroduceExplainingVariable.cs" />
     <Compile Include="CH06\CH0606_SplitTemporaryVariable.cs" />
+    <Compile Include="CH06\CH0607_RemoveAssignmentToParameters.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SampleExtraMethod.cs" />
