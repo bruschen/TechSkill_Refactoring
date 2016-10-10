@@ -8,9 +8,11 @@ namespace CH0601ExtraMethod
 {
     public class SampleExtraMethod
     {
+        private double _quantity;
+        private int _itemPrice;
         private object _name;
 
-        public void PrintOwing(double amount)
+        public double PrintOwing(double amount)
         {
             //// Extra Method without local variable
             PrintBanner();
@@ -19,6 +21,17 @@ namespace CH0601ExtraMethod
 
             //// Extra Method with local variable
             PrintDetail(outStanding);
+
+            double basePrice = this._itemPrice * this._itemPrice;
+
+            if (basePrice > 1000)
+            {
+                return basePrice*0.95;
+            }
+            else
+            {
+                return basePrice*0.98;
+            }
         }
 
         private double GetOutStanding(double outStanding)
