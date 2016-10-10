@@ -8,22 +8,12 @@ namespace CH0601ExtraMethod.CH06
 {
     public class CH0608_ReplaceMethodWithMethodObject
     {
-        public int Account(int inputVal, int quantity, int yearToDate)
+        public int Gamma(int inputVal, int quantity, int yearToDate)
         {
-            int importantValue1 = (inputVal*quantity) + Delta();
-            int importantValue2 = (inputVal*yearToDate) + 100;
-
-            if ((yearToDate-importantValue1)>100)
-            {
-                importantValue2 -= 20;
-            }
-
-            int importantValue3 = importantValue2*7;
-
-            return importantValue3 - 2*importantValue1;
+            return new CH0608_ReplaceMethodWithMethodObject2(this, inputVal, quantity, yearToDate).Compute();
         }
 
-        private int Delta()
+        public int Delta()
         {
             throw new NotImplementedException();
         }
