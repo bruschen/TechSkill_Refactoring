@@ -22,7 +22,28 @@ namespace CH0601ExtraMethod
             //// Extra Method with local variable
             PrintDetail(outStanding);
 
+            #region 6.5 Introduce explaining variable
+            string plateform = string.Empty;
+            string browser = string.Empty;
+            int resize = 0;
+
+            if (plateform.ToUpper().IndexOf("MAC") >-1 &&
+                browser.ToUpper().IndexOf("IE")>-1 &&
+                WasInitialized() && resize>0)
+            {
+                //// do something
+            }
+
+            
+
+            #endregion
+
             return GetPrice();
+        }
+
+        private bool WasInitialized()
+        {
+            return true;
         }
 
         private double GetPrice()
