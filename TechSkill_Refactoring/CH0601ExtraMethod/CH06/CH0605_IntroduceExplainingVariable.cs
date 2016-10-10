@@ -28,10 +28,30 @@ namespace CH0601ExtraMethod
         {
             //price = baseprice- discountPrice +shipping
 
-            return _quantity * _itemPrice -
-                   Math.Max(0, _quantity - 500) * _itemPrice * 0.0 +
-                   Math.Min(_quantity * _itemPrice * 0.1, 100.0);
+            return GetPrice();
 
+        }
+
+        private double GetPrice()
+        {
+            return GetBasePrice() -
+                   GetDiscountPrice() +
+                   GetShippingPrice();
+        }
+
+        private double GetShippingPrice()
+        {
+            return Math.Min(GetBasePrice() * 0.1, 100.0);
+        }
+
+        private double GetDiscountPrice()
+        {
+            return Math.Max(0, _quantity - 500) * _itemPrice * 0.0;
+        }
+
+        private double GetBasePrice()
+        {
+            return _quantity * _itemPrice;
         }
     }
 }
