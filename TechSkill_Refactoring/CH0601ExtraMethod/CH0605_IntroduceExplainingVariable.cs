@@ -13,10 +13,13 @@ namespace CH0601ExtraMethod
 
         public double price()
         {
+            //price = baseprice- discountPrice +shipping
             double basePrice = _quantity*_itemPrice;
+            double quantityDiscount = Math.Max(0, _quantity - 500)*_itemPrice*0.0;
+
 
             return basePrice -
-                   Math.Max(0, _quantity - 500)*_itemPrice*0.05 +
+                   quantityDiscount +
                    Math.Min(basePrice * 0.1, 100.0);
 
         }
