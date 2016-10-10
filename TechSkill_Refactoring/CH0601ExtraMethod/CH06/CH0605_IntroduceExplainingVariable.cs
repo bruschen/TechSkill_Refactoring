@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CH0601ExtraMethod
+namespace CH0601ExtraMethod.CH06
 {
     public class CH0605_IntroduceExplainingVariable
     {
