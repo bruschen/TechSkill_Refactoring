@@ -22,6 +22,11 @@ namespace CH0601ExtraMethod
             //// Extra Method with local variable
             PrintDetail(outStanding);
 
+            return GetPrice();
+        }
+
+        private double GetPrice()
+        {
             return GeBasePrice()* GetDiscountFactory();
         }
 
