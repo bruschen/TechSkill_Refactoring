@@ -22,14 +22,18 @@ namespace CH0601ExtraMethod
             //// Extra Method with local variable
             PrintDetail(outStanding);
 
+            double discountFactory;
+
             if (GeBasePrice() > 1000)
             {
-                return GeBasePrice() * 0.95;
+                discountFactory=0.95;
             }
             else
             {
-                return GeBasePrice() * 0.98;
+                discountFactory = 0.98;
             }
+
+            return GeBasePrice()*discountFactory;
         }
 
         private int GeBasePrice()
