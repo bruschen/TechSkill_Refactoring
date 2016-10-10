@@ -22,16 +22,19 @@ namespace CH0601ExtraMethod
             //// Extra Method with local variable
             PrintDetail(outStanding);
 
-            double basePrice = this._itemPrice * this._itemPrice;
-
-            if (basePrice > 1000)
+            if (GeBasePrice() > 1000)
             {
-                return basePrice*0.95;
+                return GeBasePrice() * 0.95;
             }
             else
             {
-                return basePrice*0.98;
+                return GeBasePrice() * 0.98;
             }
+        }
+
+        private int GeBasePrice()
+        {
+            return this._itemPrice * this._itemPrice;
         }
 
         private double GetOutStanding(double outStanding)
