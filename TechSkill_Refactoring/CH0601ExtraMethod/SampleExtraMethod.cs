@@ -27,9 +27,11 @@ namespace CH0601ExtraMethod
             string browser = string.Empty;
             int resize = 0;
 
-            if (plateform.ToUpper().IndexOf("MAC") >-1 &&
-                browser.ToUpper().IndexOf("IE")>-1 &&
-                WasInitialized() && resize>0)
+            bool isMacOs = plateform.ToUpper().IndexOf("MAC") > -1;
+            bool isIeBrowser = browser.ToUpper().IndexOf("IE") > -1;
+            bool wasResized = resize > 0;
+
+            if (isMacOs && isIeBrowser && wasResized && WasInitialized())
             {
                 //// do something
             }
