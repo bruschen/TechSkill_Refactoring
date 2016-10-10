@@ -13,9 +13,11 @@ namespace CH0601ExtraMethod
 
         public double price()
         {
-            return _quantity*_itemPrice -
+            double basePrice = _quantity*_itemPrice;
+
+            return basePrice -
                    Math.Max(0, _quantity - 500)*_itemPrice*0.05 +
-                   Math.Min(_quantity*_itemPrice*0.1, 100.0);
+                   Math.Min(basePrice * 0.1, 100.0);
 
         }
     }
