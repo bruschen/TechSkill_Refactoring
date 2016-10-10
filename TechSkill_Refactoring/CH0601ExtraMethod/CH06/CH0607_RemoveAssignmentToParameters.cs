@@ -29,5 +29,7 @@ namespace CH0601ExtraMethod.CH06
 
             return result;
         }
+
+
     }
 }
